@@ -2,7 +2,7 @@
 /* ==========================================================================
    SID virtual (MOS 6581/8580 aproximado) + player tipo tracker a 50 Hz.
    Todo el código de audio corre en un AudioWorklet. La función se serializa
-   a un Blob para poder abrir el demo incluso desde file:// sin servidor.
+   a un Blob para poder abrir la demo incluso desde file:// sin servidor.
    ========================================================================== */
 function sidWorkletMain() {
   'use strict';

@@ -1,6 +1,6 @@
 'use strict';
 /* ==========================================================================
-   PARTES DEL DEMO. Cada parte dibuja un frame (t = frame local a 50 Hz) en el
+   PARTES DE LA DEMO. Cada parte dibuja un frame (t = frame local a 50 Hz) en el
    framebuffer. Todo es función del tiempo => se puede saltar sin perder sincronía.
    ========================================================================== */
 (function () {

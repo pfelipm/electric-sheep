@@ -193,7 +193,7 @@
     ctx.putImageData(img, 0, 0);
   };
 
-  // ---------- Sprites del demo ----------
+  // ---------- Sprites de la demo ----------
   G.SPR = {
     sheep: [ // multicolor 14x9: 1 lana, 2 cabeza/patas, 3 ojo
       '....1111......',
