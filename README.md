@@ -1,62 +1,60 @@
-<p align="center"><a href="https://pfelipm.github.io/electric-sheep/"><img src="docs/hero.gif" alt="Electric Sheep: raster-colored logo, DYCP scroller and sheep in the open borders" width="768"></a></p>
+<p align="center"><a href="https://pfelipm.github.io/electric-sheep/"><img src="docs/hero.gif" alt="Electric Sheep: logo con barras raster, scroller DYCP y ovejas en el borde abierto" width="768"></a></p>
 
-<p align="center">🇬🇧 <strong>English</strong> · 🇪🇸 <a href="README.es.md">Español</a></p>
+<p align="center">🇪🇸 <strong>Español</strong> · 🇬🇧 <a href="README.en.md">English</a></p>
 
-# ELECTRIC SHEEP · a Commodore 64 tribute demo
+# ELECTRIC SHEEP · una demo homenaje al Commodore 64
 
-> *Do Androids Dream of Electric Sheep?*
+> *¿Sueñan los androides con ovejas eléctricas?*
 
-**▶ Watch it (and, above all, listen to it) here: https://pfelipm.github.io/electric-sheep/**
+**▶ Mírala (y, sobre todo, escúchala) aquí: https://pfelipm.github.io/electric-sheep/**
 
-A multi-part demo in the spirit of the C64 demoscene, inspired by Philip K. Dick's novel and *Blade Runner*, with an original SID soundtrack that tries to bring the soul of Vangelis to a 1982 sound chip. Everything is made with **HTML, JavaScript and CSS, with no libraries at all**.
+Una demo multiparte al estilo de la demoscene del C64, inspirada en la novela de Philip K. Dick y en *Blade Runner*, con una banda sonora original para SID que intenta llevar el espíritu de Vangelis a un chip de 1982. Todo hecho con **HTML, JavaScript y CSS, sin ninguna librería**.
 
-The voice and the Voight-Kampff test are in English; the start screen and the scrollers are in Spanish, the native language of its creator.
+## Las partes
 
-## The parts
+![Seis momentos de la demo: la ciudad, el test Voight-Kampff, la oveja 3D, el plasma, la lluvia y el final contando ovejas](docs/gallery.png)
 
-![Six moments from the demo: the city, the Voight-Kampff test, the 3D sheep, the plasma, the rain and the sheep-counting finale](docs/gallery.png)
-
-| # | Part | Effects |
+| # | Parte | Efectos |
 |---|---|---|
-| 0 | Boot | BASIC V2 screen, `LOAD`, *PRESS PLAY ON TAPE* and tape-loading stripes in the border |
-| 1 | Los Angeles, November 2019 | Parallax city, pyramids, flare bursts synced to the timpani, spinners, rain |
-| 2 | Title | Raster bars in the border, raster-colored wobbling logo, DYCP scroller, sprites in the open borders |
-| 3 | Voight-Kampff test | Procedural eye with a pupil that pulses to the music, synthesized voice, oscilloscope showing the real SID output |
-| 4 | "Amiga" effects | Filled-vector 3D sheep with lightning, plasma, rotozoomer |
-| 5 | Tears in rain | Monologue, lightning and the dove |
-| 6 | Finale | Sheep jumping the fence (count them!), Zzz and a greetings scroller, looping |
+| 0 | Arranque | Pantalla de BASIC V2, `LOAD`, *PRESS PLAY ON TAPE* y franjas de carga en el borde |
+| 1 | Los Ángeles, noviembre de 2019 | Ciudad con *parallax*, pirámides, llamaradas sincronizadas con los timbales, *spinners*, lluvia |
+| 2 | Título | Barras raster en el borde, logo con raster y ondulación, scroller DYCP, sprites en el borde "abierto" |
+| 3 | Test Voight-Kampff | Ojo procedural cuya pupila late con la música, voz sintetizada, osciloscopio con la salida real del SID |
+| 4 | Efectos "Amiga" | Oveja 3D de polígonos rellenos con rayos, plasma, rotozoom |
+| 5 | Lágrimas en la lluvia | Monólogo, relámpagos y la paloma |
+| 6 | Final | Ovejas saltando la valla (¡cuéntalas!), Zzz y scroller de saludos, en bucle |
 
-## Controls
+## Controles
 
-| Key | Action |
+| Tecla | Acción |
 |---|---|
-| `SPACE` | Skip to the next part |
-| `R` | "Vangelis" reverb / pure SID |
-| `V` | SAM voice (4-bit SID) / browser voice |
-| `C` | CRT effect on/off |
-| `F` | Fullscreen |
-| `M` | Mute |
+| `ESPACIO` | Saltar a la siguiente parte |
+| `R` | Reverb "Vangelis" / SID puro |
+| `V` | Voz SAM (SID de 4 bits) / voz del navegador |
+| `C` | Efecto CRT on/off |
+| `F` | Pantalla completa |
+| `M` | Silencio |
 
-You can jump straight to a part with `?part=N` (0-5), e.g. `?part=2`.
+Puedes entrar directamente en una parte con `?part=N` (0-5), por ejemplo `?part=2`.
 
-## Under the hood
+## Cómo funciona por dentro
 
-- **Virtual SID** ([js/sid.js](js/sid.js)): two chips (6 voices) emulated in an `AudioWorklet`. Each has a 24-bit phase accumulator, triangle, sawtooth, pulse with PWM, 23-bit LFSR noise, combined waveforms, ring mod, hard sync, ADSR with the chip's exponential curve, and a resonant multimode filter shared per chip. On top runs a 50 Hz tracker-style player with wavetables, chord arpeggios, vibrato, portamento and hard restart.
-- **Soundtrack** ([js/song.js](js/song.js)): an original composition written in a tiny tracker language (`d5/8 ^e5/4 d4{0,3,7,12}/4 ...`).
-- **SAM voice** ([js/sam.js](js/sam.js)): modeled on the 1982 *Software Automatic Mouth*. It turns text into phonemes, applies intonation, runs formant synthesis and quantizes to 4 bits. The voice is played back as a "digi" through the SID volume register, the same trick the original used.
-- **Graphics** ([js/gfx.js](js/gfx.js), [js/parts.js](js/parts.js)): a 384×272 framebuffer (PAL screen with border) using the C64's 16-color palette, a custom 8×8 font, sprites, ordered dithering and table-based fades. Everything is a function of musical time, so audio and video never drift apart.
+- **SID virtual** ([js/sid.js](js/sid.js)): dos chips (6 voces) emulados en un `AudioWorklet`: acumulador de fase de 24 bits, triángulo, sierra, pulso con PWM, ruido LFSR de 23 bits, ondas combinadas, *ring mod*, *hard sync*, ADSR con la curva exponencial del chip y filtro resonante multimodo compartido por chip. Encima, un *player* tipo tracker a 50 Hz con wavetables, arpegios de acordes, vibrato, portamento y *hard restart*.
+- **Banda sonora** ([js/song.js](js/song.js)): composición original escrita en un mini-lenguaje de tracker (`d5/8 ^e5/4 d4{0,3,7,12}/4 ...`).
+- **Voz SAM** ([js/sam.js](js/sam.js)): como el *Software Automatic Mouth* de 1982. Pasa de texto a fonemas, aplica entonación, sintetiza por formantes y cuantiza a 4 bits. La voz se reproduce como "digi" a través del registro de volumen del SID, el mismo truco del original.
+- **Gráficos** ([js/gfx.js](js/gfx.js), [js/parts.js](js/parts.js)): framebuffer de 384×272 (pantalla PAL con borde) con la paleta de 16 colores del C64, fuente 8×8 propia, sprites, *dithering* ordenado y fundidos por tabla. Todo es función del tiempo musical, así que audio y vídeo nunca se desincronizan.
 
-No server needed: just open `index.html` in your browser.
+No hace falta servidor: basta con abrir `index.html` en el navegador.
 
-## Credits
+## Créditos
 
-- **Idea and direction:** Pablo Felip (aka NEXUS 10)
-- **Code, graphics and SID music:** Claude (Anthropic)
+- **Idea y dirección:** Pablo Felip (aka NEXUS 10)
+- **Código, gráficos y música SID:** Claude (Anthropic)
 
-Greetings to Crest, Oxyron, Booze Design, Censor Design, Performers, Fairlight, Triad, Bonzai, Atlantis, Genesis Project, Maniacs of Noise… and to Rob Hubbard, Martin Galway, Ben Daglish, Jeroen Tel and Chris Hülsbeck.
+Saludos a Crest, Oxyron, Booze Design, Censor Design, Performers, Fairlight, Triad, Bonzai, Atlantis, Genesis Project, Maniacs of Noise… y a Rob Hubbard, Martin Galway, Ben Daglish, Jeroen Tel y Chris Hülsbeck.
 
-*Blade Runner*, *Do Androids Dream of Electric Sheep?*, Commodore 64 and SAM belong to their respective owners. This is a non-profit tribute: the music and texts are original.
+*Blade Runner*, *Do Androids Dream of Electric Sheep?*, Commodore 64 y SAM pertenecen a sus respectivos titulares. Este es un homenaje sin ánimo de lucro: la música y los textos son originales.
 
-## License
+## Licencia
 
 [MIT](LICENSE)
