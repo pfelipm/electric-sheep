@@ -1,0 +1,68 @@
+:root {
+  --c64-blue: #352879;
+  --c64-lblue: #6c5eb5;
+  --c64-green: #9ad284;
+}
+html, body {
+  margin: 0; height: 100%;
+  background: #000; color: var(--c64-lblue);
+  overflow: hidden;
+  font-family: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
+}
+#stage {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+}
+#screen {
+  display: block; width: 100%; height: 100%;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+#crt { position: absolute; inset: 0; pointer-events: none; display: none; }
+
+/* Efecto monitor CRT: líneas de barrido, viñeta y un poco de brillo */
+body.crt #screen { filter: saturate(1.25) contrast(1.08) brightness(1.12) blur(0.4px); }
+body.crt #crt {
+  display: block;
+  background:
+    radial-gradient(ellipse at center, transparent 58%, rgba(0, 0, 0, .6) 100%),
+    linear-gradient(rgba(0, 0, 0, .28) 50%, transparent 50%) 0 0 / 100% calc(100% / 272);
+  border-radius: 1.5% / 2%;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, .7);
+}
+
+/* Pantalla de inicio */
+#start {
+  position: fixed; inset: 0;
+  display: grid; place-items: center;
+  background: radial-gradient(circle at center, #15103a 0%, #000 75%);
+  z-index: 10; transition: opacity .6s;
+}
+#start.hidden { opacity: 0; pointer-events: none; }
+#start .box {
+  background: var(--c64-blue);
+  border: 28px solid var(--c64-lblue);
+  padding: 24px 32px; max-width: min(560px, calc(100vw - 100px));
+  text-align: center; text-transform: uppercase;
+  box-shadow: 0 0 80px rgba(108, 94, 181, .35);
+}
+#start h1 { margin: 6px 0 10px; font-size: clamp(26px, 6vw, 44px); letter-spacing: .12em; color: #fff; }
+#start .sub { text-transform: none; color: #c8c2ff; line-height: 1.5; }
+#start .dim { opacity: .75; font-size: 13px; letter-spacing: .1em; }
+#start button {
+  margin: 14px 0 4px; padding: 12px 22px;
+  font: inherit; font-size: 18px; letter-spacing: .08em;
+  color: var(--c64-blue); background: var(--c64-lblue);
+  border: 0; cursor: pointer;
+}
+#start button:hover, #start button:focus-visible { background: #fff; outline: none; }
+#start table { margin: 14px auto 0; font-size: 13px; text-transform: none; border-spacing: 10px 3px; text-align: left; }
+#start td:first-child { color: #fff; }
+
+#osd {
+  position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%);
+  padding: 6px 14px; background: rgba(53, 40, 121, .9); color: #fff;
+  font-size: 14px; letter-spacing: .1em;
+  opacity: 0; transition: opacity .3s; pointer-events: none; z-index: 20;
+}
+#osd.show { opacity: 1; }

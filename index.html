@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Electric Sheep · C64 tribute</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="crt">
+  <div id="stage">
+    <canvas id="screen" width="384" height="272"></canvas>
+    <div id="crt"></div>
+  </div>
+
+  <div id="start">
+    <div class="box">
+      <p class="dim">NEXUS-6 PRESENTA</p>
+      <h1>ELECTRIC SHEEP</h1>
+      <p class="sub">¿Sueñan los androides con ovejas eléctricas?<br>Un demo homenaje al Commodore 64</p>
+      <button id="power">▶ ENCENDER EL C64</button>
+      <p class="dim">o pulsa ENTER · con sonido, mejor con auriculares</p>
+      <table>
+        <tr><td>ESPACIO</td><td>saltar a la siguiente parte</td></tr>
+        <tr><td>R</td><td>reverb "Vangelis" / SID puro</td></tr>
+        <tr><td>C</td><td>efecto CRT on/off</td></tr>
+        <tr><td>F</td><td>pantalla completa</td></tr>
+        <tr><td>V</td><td>voz SAM (SID) / voz del navegador</td></tr>
+        <tr><td>M</td><td>silencio</td></tr>
+      </table>
+    </div>
+  </div>
+  <div id="osd"></div>
+
+  <script src="js/gfx.js"></script>
+  <script src="js/sid.js"></script>
+  <script src="js/song.js"></script>
+  <script src="js/sam.js"></script>
+  <script src="js/speech.js"></script>
+  <script src="js/parts.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
