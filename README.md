@@ -1,3 +1,5 @@
+<p align="center"><a href="https://pfelipm.github.io/electric-sheep/"><img src="docs/hero.gif" alt="Electric Sheep: logo con barras raster, scroller DYCP y ovejas en el borde abierto" width="768"></a></p>
+
 # ELECTRIC SHEEP · un demo homenaje al Commodore 64
 
 > *¿Sueñan los androides con ovejas eléctricas?*
@@ -7,6 +9,8 @@
 Un demo multiparte al estilo de la demoscene del C64, inspirado en la novela de Philip K. Dick y en *Blade Runner*, con una banda sonora original para SID que intenta llevar el espíritu de Vangelis a un chip de 1982. Todo hecho con **HTML, JavaScript y CSS, sin ninguna librería**.
 
 ## Las partes
+
+![Seis momentos del demo: la ciudad, el test Voight-Kampff, la oveja 3D, el plasma, la lluvia y el final contando ovejas](docs/gallery.png)
 
 | # | Parte | Efectos |
 |---|---|---|
